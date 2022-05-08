@@ -1,0 +1,30 @@
+body {
+    background-color: #f9f8fb;
+}
+
+.art-gallery {
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    width: 100vw;
+    height: 100vw;
+    display: flex;
+    justify-content: space-between;
+    perspective: 1000px;
+
+    img {
+        max-width: 250px;
+    }
+}
+
+.art-gallery__column {
+    flex: 1;
+    display: flex;
+    gap: 100px;
+    flex-direction: column;
+    align-items: center;
+}
+
+.art-gallery-space {
+    height: 5000px;
+}
