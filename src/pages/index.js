@@ -2,6 +2,8 @@ import * as React from "react"
 import ArtGallery from "../components/ArtGallery"
 import Navbar from "../components/Navbar"
 import "../styles/style.scss"
+import ArtGalleryContainer from "../components/ArtGalleryContainer"
+
 
 
 
@@ -11,7 +13,7 @@ const IndexPage = () => {
     <main>
       <title>Home Page</title>
       <Navbar></Navbar>
-      <ArtGallery></ArtGallery>
+      <ArtGalleryContainer></ArtGalleryContainer>
       <h1>
        ciao sono mario 
       </h1>

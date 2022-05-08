@@ -10,5 +10,13 @@ module.exports = {
             "path": "./src/images/"
         },
         __key: "images"
+    },
+    {
+        resolve: 'gatsby-source-contentful',
+        options: {
+        spaceId: "twvx1imgz30l",
+        accessToken: "wAGXwStYwQxFsRxoxmuITuyXdx12bRTvOzJr_WAPd9g",   
+        },
+        __key: "images"
     }]
 };
