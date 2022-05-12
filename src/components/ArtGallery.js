@@ -2,11 +2,13 @@
 import * as React from "react"
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { GatsbyImage } from "gatsby-plugin-image";
+import { ScrollSmoother } from "./../ext-libs/ScrollSmoother";
 gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollSmoother)
 
 
-
-
+// Sto usando una classe
 class ArtGallery extends React.Component {
 
     componentDidMount() {
@@ -20,7 +22,7 @@ class ArtGallery extends React.Component {
             let translateYFrom = -1400;
             let translateYTo = 0;
 
-            if (index == 1) {
+            if (index === 1) {
                 translateYFrom = 0;
                 translateYTo = -1400;
             }
@@ -65,34 +67,20 @@ class ArtGallery extends React.Component {
 
     render() {
 
-        const data = this.props.data;
-
         const copertine = this.props.data.allContentfulCopertina.edges;
 
-        const colonna1 = copertine.filter((copertina, indice) => (indice + 1) % 3 == 1);
-        const colonna2 = copertine.filter((copertina, indice) => (indice + 1) % 3 == 2);
-        const colonna3 = copertine.filter((copertina, indice) => (indice + 1) % 3 == 0);
-
-
-        const datiDiContentfulPuliti = this.props.data.allContentfulCopertina.edges;
-
-        const frutta = datiDiContentfulPuliti;
-
-        frutta.map((value, index) => {
-            console.log(value, index);
-        });
-
-
-        console.log(colonna1)
+        const colonna1 = copertine.filter((copertina, indice) => (indice + 1) % 3 === 1);
+        const colonna2 = copertine.filter((copertina, indice) => (indice + 1) % 3 === 2);
+        const colonna3 = copertine.filter((copertina, indice) => (indice + 1) % 3 === 0);
 
         return (
-            <div>
-                <div className="art-gallery">
+            <div id="smooth-wrapper">
+                <div className="art-gallery" id="smooth-content">
                     <div className="art-gallery__column" id="colonna-1">
                         <h2>Colonna 1</h2>
                         {colonna1.map(copertina => (
                             <div className="copertina">
-                                <img src={copertina.node.immagine.publicUrl} />
+                                <GatsbyImage image={copertina.node.immagine.gatsbyImage} alt={copertina.node.titolo} loading="eager" />
                             </div>
                         ))}
 
@@ -102,7 +90,7 @@ class ArtGallery extends React.Component {
                         <h2>Colonna 2</h2>
                         {colonna2.map(copertina => (
                             <div>
-                                <img src={copertina.node.immagine.publicUrl} />
+                                <GatsbyImage image={copertina.node.immagine.gatsbyImage} alt={copertina.node.titolo} loading="eager" />
                             </div>
                         ))}
 
@@ -112,15 +100,10 @@ class ArtGallery extends React.Component {
                         <h2>Colonna 3</h2>
                         {colonna3.map(copertina => (
                             <div>
-                                <img src={copertina.node.immagine.publicUrl} />
+                                <GatsbyImage image={copertina.node.immagine.gatsbyImage} alt={copertina.node.titolo} loading="eager" />
                             </div>
                         ))}
-
                     </div>
-
-
-                    <div></div>
-                    <div></div>
                 </div>
                 <div className="art-gallery-space"></div>
 

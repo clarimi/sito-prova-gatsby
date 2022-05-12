@@ -15,12 +15,12 @@ const ArtGalleryContainer = () => {
             titolo
             descrizione
             immagine {
-                publicUrl
+                gatsbyImage(width: 360)
             }
             }
         }
         }
-    }    `)
+    }`);
 
     return (
         <ArtGallery data={copertineData}></ArtGallery>

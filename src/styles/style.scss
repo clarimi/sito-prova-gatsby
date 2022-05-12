@@ -12,8 +12,8 @@ body {
     justify-content: space-between;
     perspective: 1000px;
 
-    img {
-        max-width: 250px;
+    .gatsby-image-wrapper {
+        max-width: 300px;
     }
 }
 
@@ -26,5 +26,5 @@ body {
 }
 
 .art-gallery-space {
-    height: 5000px;
+    height: 6000px;
 }

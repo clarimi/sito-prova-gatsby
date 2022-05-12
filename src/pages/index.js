@@ -1,5 +1,4 @@
 import * as React from "react"
-import ArtGallery from "../components/ArtGallery"
 import Navbar from "../components/Navbar"
 import "../styles/style.scss"
 import ArtGalleryContainer from "../components/ArtGalleryContainer"
@@ -15,7 +14,7 @@ const IndexPage = () => {
       <Navbar></Navbar>
       <ArtGalleryContainer></ArtGalleryContainer>
       <h1>
-       ciao sono mario 
+        ciao sono mario
       </h1>
     </main>
   )
