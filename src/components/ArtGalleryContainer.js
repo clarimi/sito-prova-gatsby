@@ -15,7 +15,7 @@ const ArtGalleryContainer = () => {
             titolo
             descrizione
             immagine {
-                gatsbyImage(width: 360)
+                gatsbyImage(width: 260)
             }
             }
         }

@@ -28,3 +28,21 @@ body {
 .art-gallery-space {
     height: 6000px;
 }
+
+.copertina-detaisls {
+    display: flex;    
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    justify-content: center;
+    padding: 5%;
+    gap: 20px;
+}
+
+.copertina-details__testo {
+    min-width: 300px;
+    max-width: 500px;
+}

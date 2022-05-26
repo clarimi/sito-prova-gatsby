@@ -1,8 +1,7 @@
-
-import * as React from "react"
+import * as React from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { GatsbyImage } from "gatsby-plugin-image";
+import { GatsbyImage, StaticImage } from "gatsby-plugin-image";
 import { ScrollSmoother } from "./../ext-libs/ScrollSmoother";
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(ScrollSmoother)
@@ -11,20 +10,32 @@ gsap.registerPlugin(ScrollSmoother)
 // Sto usando una classe
 class ArtGallery extends React.Component {
 
+    constructor(props) {
+        super(props);
+        this.showDetails = this.showDetails.bind(this);
+        this.state = {
+            copertina: {
+                immagine: null,
+                titolo: null,
+                testo: null
+            }
+        };
+
+    }
+
     componentDidMount() {
         const colonne = 3;
-
 
         for (let index = 0; index < colonne; index++) {
 
             const nomeColonna = "#colonna-" + (index + 1)
 
-            let translateYFrom = -1400;
+            let translateYFrom = -1200;
             let translateYTo = 0;
 
             if (index === 1) {
                 translateYFrom = 0;
-                translateYTo = -1400;
+                translateYTo = -1200;
             }
             gsap.fromTo(nomeColonna,
                 { // FROM
@@ -65,8 +76,19 @@ class ArtGallery extends React.Component {
 
     }
 
-    render() {
+    showDetails(copertina) {
+        this.setState({
+            copertina: {
+                immagine: copertina.node.immagine.gatsbyImage,
+                titolo: copertina.node.titolo,
+                testo: "qweewq"
+            }
+        });
 
+
+    }
+
+    render() {
         const copertine = this.props.data.allContentfulCopertina.edges;
 
         const colonna1 = copertine.filter((copertina, indice) => (indice + 1) % 3 === 1);
@@ -78,8 +100,8 @@ class ArtGallery extends React.Component {
                 <div className="art-gallery" id="smooth-content">
                     <div className="art-gallery__column" id="colonna-1">
                         <h2>Colonna 1</h2>
-                        {colonna1.map(copertina => (
-                            <div className="copertina">
+                        {colonna1.map((copertina, id) => (
+                            <div className="copertina" onClick={(e) => this.showDetails(copertina)} key={id}>
                                 <GatsbyImage image={copertina.node.immagine.gatsbyImage} alt={copertina.node.titolo} loading="eager" />
                             </div>
                         ))}
@@ -88,8 +110,8 @@ class ArtGallery extends React.Component {
 
                     <div className="art-gallery__column" id="colonna-2">
                         <h2>Colonna 2</h2>
-                        {colonna2.map(copertina => (
-                            <div>
+                        {colonna2.map((copertina, id) => (
+                            <div className="copertina" onClick={(e) => this.showDetails(copertina)} key={id}>
                                 <GatsbyImage image={copertina.node.immagine.gatsbyImage} alt={copertina.node.titolo} loading="eager" />
                             </div>
                         ))}
@@ -98,13 +120,25 @@ class ArtGallery extends React.Component {
 
                     <div className="art-gallery__column" id="colonna-3">
                         <h2>Colonna 3</h2>
-                        {colonna3.map(copertina => (
-                            <div>
+                        {colonna3.map((copertina, id) => (
+                            <div className="copertina" onClick={(e) => this.showDetails(copertina)} key={id}>
                                 <GatsbyImage image={copertina.node.immagine.gatsbyImage} alt={copertina.node.titolo} loading="eager" />
                             </div>
                         ))}
                     </div>
                 </div>
+
+                <div className="copertina-details">
+                    <div className="copertina-details__img">
+                        <GatsbyImage image={this.state.copertina.immagine} alt="Dettaglio"></GatsbyImage>
+                    </div>
+
+                    <div className="copertina-details__testo">
+                        <h2>{this.state.copertina.titolo}</h2>
+                        <p>{this.state.copertina.testo}</p>
+                    </div>
+                </div>
+
                 <div className="art-gallery-space"></div>
 
             </div>
