@@ -3,6 +3,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { GatsbyImage, StaticImage } from "gatsby-plugin-image";
 import { ScrollSmoother } from "./../ext-libs/ScrollSmoother";
+import { Link } from "gatsby"
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(ScrollSmoother)
 
@@ -70,10 +71,6 @@ class ArtGallery extends React.Component {
 
         // make the right edge "stick" to the scroll bar. force3D: true improves performance
         gsap.set(".art-gallery__column", { transformOrigin: "right center", force3D: true });
-
-
-
-
     }
 
     showDetails(copertina) {
@@ -84,8 +81,6 @@ class ArtGallery extends React.Component {
                 testo: "qweewq"
             }
         });
-
-
     }
 
     render() {
@@ -95,15 +90,16 @@ class ArtGallery extends React.Component {
         const colonna2 = copertine.filter((copertina, indice) => (indice + 1) % 3 === 2);
         const colonna3 = copertine.filter((copertina, indice) => (indice + 1) % 3 === 0);
 
+
         return (
             <div id="smooth-wrapper">
                 <div className="art-gallery" id="smooth-content">
                     <div className="art-gallery__column" id="colonna-1">
                         <h2>Colonna 1</h2>
                         {colonna1.map((copertina, id) => (
-                            <div className="copertina" onClick={(e) => this.showDetails(copertina)} key={id}>
+                            <Link to={`/copertina/${copertina.node.id}/`} className="copertina" key={id}>
                                 <GatsbyImage image={copertina.node.immagine.gatsbyImage} alt={copertina.node.titolo} loading="eager" />
-                            </div>
+                            </Link>
                         ))}
 
                     </div>
@@ -111,9 +107,9 @@ class ArtGallery extends React.Component {
                     <div className="art-gallery__column" id="colonna-2">
                         <h2>Colonna 2</h2>
                         {colonna2.map((copertina, id) => (
-                            <div className="copertina" onClick={(e) => this.showDetails(copertina)} key={id}>
+                            <Link to={`/copertina/${copertina.node.id}/`} className="copertina" key={id}>
                                 <GatsbyImage image={copertina.node.immagine.gatsbyImage} alt={copertina.node.titolo} loading="eager" />
-                            </div>
+                            </Link>
                         ))}
 
                     </div>
@@ -121,24 +117,12 @@ class ArtGallery extends React.Component {
                     <div className="art-gallery__column" id="colonna-3">
                         <h2>Colonna 3</h2>
                         {colonna3.map((copertina, id) => (
-                            <div className="copertina" onClick={(e) => this.showDetails(copertina)} key={id}>
+                            <Link to={`/copertina/${copertina.node.id}/`} className="copertina" key={id}>
                                 <GatsbyImage image={copertina.node.immagine.gatsbyImage} alt={copertina.node.titolo} loading="eager" />
-                            </div>
+                            </Link>
                         ))}
                     </div>
                 </div>
-
-                <div className="copertina-details">
-                    <div className="copertina-details__img">
-                        <GatsbyImage image={this.state.copertina.immagine} alt="Dettaglio"></GatsbyImage>
-                    </div>
-
-                    <div className="copertina-details__testo">
-                        <h2>{this.state.copertina.titolo}</h2>
-                        <p>{this.state.copertina.testo}</p>
-                    </div>
-                </div>
-
                 <div className="art-gallery-space"></div>
 
             </div>
