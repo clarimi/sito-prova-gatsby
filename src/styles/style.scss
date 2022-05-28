@@ -57,7 +57,7 @@ header {
     left: 0;
     z-index: 1000;
     gap: 70px;
-    align-items: center;
+    align-items: baseline;
 }
 
 .logo {
@@ -67,4 +67,6 @@ header {
 .link-navbar {
     min-width: 120px;
     text-align: center;
+    text-decoration: none;
+    color: black !important;
 }
