@@ -3,7 +3,7 @@ module.exports = {
         title: `Sito Prova`,
         siteUrl: `https://www.yourdomain.tld`
     },
-    plugins: ["gatsby-plugin-sass", "gatsby-plugin-image", "gatsby-plugin-sharp", "gatsby-transformer-sharp", {
+    plugins: ["gatsby-plugin-sass", "gatsby-plugin-image", "gatsby-plugin-sharp", "gatsby-transformer-sharp", "gatsby-plugin-react-helmet", "gatsby-plugin-transition-link", {
         resolve: 'gatsby-source-filesystem',
         options: {
             "name": "images",

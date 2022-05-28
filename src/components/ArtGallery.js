@@ -1,11 +1,14 @@
 import * as React from "react";
-import { gsap } from "gsap";
+import { gsap, Power1 } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { GatsbyImage, StaticImage } from "gatsby-plugin-image";
 import { ScrollSmoother } from "./../ext-libs/ScrollSmoother";
 import { Link } from "gatsby"
+import TransitionLink from 'gatsby-plugin-transition-link';
+
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(ScrollSmoother)
+
 
 
 // Sto usando una classe
@@ -21,7 +24,26 @@ class ArtGallery extends React.Component {
                 testo: null
             }
         };
+    }
 
+    leaving() {
+        console.log("leaving art gallery");
+        gsap.to(".art-gallery", {
+            opacity: 0,
+            scale: 0.94,
+            duration: 0.2,
+            ease: Power1.easeIn
+        })
+    }
+
+    entering() {
+        console.log("entering art gallery");
+        gsap.from(".copertina", {
+            translateY: 400,
+            opacity: 0,
+            duration: 0.5,
+            ease: Power1.easeOut
+        })
     }
 
     componentDidMount() {
@@ -35,7 +57,7 @@ class ArtGallery extends React.Component {
             let translateYTo = 0;
 
             if (index === 1) {
-                translateYFrom = 0;
+                translateYFrom = 100;
                 translateYTo = -1200;
             }
             gsap.fromTo(nomeColonna,
@@ -49,9 +71,6 @@ class ArtGallery extends React.Component {
                     scrub: true,
                 }
             });
-
-
-
         }
 
         let proxy = { skew: 0 },
@@ -71,6 +90,20 @@ class ArtGallery extends React.Component {
 
         // make the right edge "stick" to the scroll bar. force3D: true improves performance
         gsap.set(".art-gallery__column", { transformOrigin: "right center", force3D: true });
+
+        gsap.from("#colonna-1, #colonna-3", {
+            translateY: -1400,
+            opacity: 0,
+            duration: 0.6,
+            ease: Power1.easeOut
+        });
+
+        gsap.from("#colonna-2", {
+            translateY: 200,
+            opacity: 0,
+            duration: 0.6,
+            ease: Power1.easeOut
+        });
     }
 
     showDetails(copertina) {
@@ -90,36 +123,56 @@ class ArtGallery extends React.Component {
         const colonna2 = copertine.filter((copertina, indice) => (indice + 1) % 3 === 2);
         const colonna3 = copertine.filter((copertina, indice) => (indice + 1) % 3 === 0);
 
-
         return (
             <div id="smooth-wrapper">
                 <div className="art-gallery" id="smooth-content">
                     <div className="art-gallery__column" id="colonna-1">
-                        <h2>Colonna 1</h2>
                         {colonna1.map((copertina, id) => (
-                            <Link to={`/copertina/${copertina.node.id}/`} className="copertina" key={id}>
+                            <TransitionLink exit={{
+                                trigger: ({ exit, node }) => this.leaving(exit, node),
+                                length: 1
+                            }}
+                                entry={{
+                                    trigger: ({ enter, node }) => this.entering(enter, node),
+                                    length: 1,
+                                    delay: 0.6
+                                }} to={`/copertina/${copertina.node.id}/`} className="copertina" key={id}>
                                 <GatsbyImage image={copertina.node.immagine.gatsbyImage} alt={copertina.node.titolo} loading="eager" />
-                            </Link>
+                            </TransitionLink>
                         ))}
 
                     </div>
 
                     <div className="art-gallery__column" id="colonna-2">
-                        <h2>Colonna 2</h2>
                         {colonna2.map((copertina, id) => (
-                            <Link to={`/copertina/${copertina.node.id}/`} className="copertina" key={id}>
+                            <TransitionLink exit={{
+                                trigger: ({ exit, node }) => this.leaving(exit, node),
+                                length: 1
+                            }}
+                                entry={{
+                                    trigger: ({ enter, node }) => this.entering(enter, node),
+                                    length: 1,
+                                    delay: 0.6
+                                }} to={`/copertina/${copertina.node.id}/`} className="copertina" key={id}>
                                 <GatsbyImage image={copertina.node.immagine.gatsbyImage} alt={copertina.node.titolo} loading="eager" />
-                            </Link>
+                            </TransitionLink>
                         ))}
 
                     </div>
 
                     <div className="art-gallery__column" id="colonna-3">
-                        <h2>Colonna 3</h2>
                         {colonna3.map((copertina, id) => (
-                            <Link to={`/copertina/${copertina.node.id}/`} className="copertina" key={id}>
+                            <TransitionLink exit={{
+                                trigger: ({ exit, node }) => this.leaving(exit, node),
+                                length: 1
+                            }}
+                                entry={{
+                                    trigger: ({ enter, node }) => this.entering(enter, node),
+                                    length: 1,
+                                    delay: 0.6
+                                }} to={`/copertina/${copertina.node.id}/`} className="copertina" key={id}>
                                 <GatsbyImage image={copertina.node.immagine.gatsbyImage} alt={copertina.node.titolo} loading="eager" />
-                            </Link>
+                            </TransitionLink>
                         ))}
                     </div>
                 </div>
