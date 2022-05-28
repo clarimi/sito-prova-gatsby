@@ -53,12 +53,12 @@ class ArtGallery extends React.Component {
 
             const nomeColonna = "#colonna-" + (index + 1)
 
-            let translateYFrom = -1200;
+            let translateYFrom = -1080;
             let translateYTo = 0;
 
             if (index === 1) {
-                translateYFrom = 100;
-                translateYTo = -1200;
+                translateYFrom = 150;
+                translateYTo = -1080;
             }
             gsap.fromTo(nomeColonna,
                 { // FROM
@@ -94,14 +94,14 @@ class ArtGallery extends React.Component {
         gsap.from("#colonna-1, #colonna-3", {
             translateY: -1400,
             opacity: 0,
-            duration: 0.6,
+            duration: 0.8,
             ease: Power1.easeOut
         });
 
         gsap.from("#colonna-2", {
-            translateY: 200,
+            translateY: 300,
             opacity: 0,
-            duration: 0.6,
+            duration: 0.8,
             ease: Power1.easeOut
         });
     }

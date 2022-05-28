@@ -48,4 +48,23 @@ body {
     max-width: 500px;
 }
 
+header {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    top: 30px;
+    right: 0;
+    left: 0;
+    z-index: 1000;
+    gap: 70px;
+    align-items: center;
+}
 
+.logo {
+    width: 200px;
+}
+
+.link-navbar {
+    min-width: 120px;
+    text-align: center;
+}
