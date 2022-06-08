@@ -13,11 +13,13 @@ const IndexPage = () => {
     <main>
       <FontImport></FontImport>
       <title>Home Page</title>
-      <Navbar></Navbar>
-      <ArtGalleryContainer></ArtGalleryContainer>
-      <h1>
-        c
-      </h1>
+      <Navbar page="home"></Navbar>
+      <div className="page">
+        <ArtGalleryContainer></ArtGalleryContainer>
+        <h1>
+          c
+        </h1>
+      </div>
     </main>
   )
 }

@@ -14,7 +14,7 @@ export const query = graphql`
         descrizione
         titolo
         immagine {
-            gatsbyImage(width: 400)
+            gatsbyImage(width: 360)
         }
       }
   }
@@ -26,9 +26,17 @@ const Copertina = props => {
             <title>Home Page</title>
             <Navbar></Navbar>
             <FontImport></FontImport>
-            <h1>{props.data.contentfulCopertina.titolo}</h1>
-            <p>{props.data.contentfulCopertina.descrizione}</p>
-            <GatsbyImage image={props.data.contentfulCopertina.immagine.gatsbyImage} alt={props.data.contentfulCopertina.titolo} loading="eager" />
+            <div className="page">
+                <div className="copertina-dettaglio">
+                    <div className="copertina-immagine" >
+                        <GatsbyImage image={props.data.contentfulCopertina.immagine.gatsbyImage} alt={props.data.contentfulCopertina.titolo} loading="eager" />
+                    </div>
+                    <div className="copertina-info">
+                        <h1>{props.data.contentfulCopertina.titolo}</h1>
+                        <p>{props.data.contentfulCopertina.descrizione}</p>
+                    </div>
+                </div>
+            </div>
         </main>
 
     )

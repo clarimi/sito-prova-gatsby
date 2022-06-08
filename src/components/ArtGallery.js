@@ -36,12 +36,11 @@ class ArtGallery extends React.Component {
         })
     }
 
-    entering() {
-        console.log("entering art gallery");
-        gsap.from(".copertina", {
-            translateY: 400,
+    enteringCopertina() {
+        gsap.from(".copertina-dettaglio", {
+            translateY: 30,
             opacity: 0,
-            duration: 0.5,
+            duration: 0.4,
             ease: Power1.easeOut
         })
     }
@@ -133,7 +132,7 @@ class ArtGallery extends React.Component {
                                 length: 1
                             }}
                                 entry={{
-                                    trigger: ({ enter, node }) => this.entering(enter, node),
+                                    trigger: ({ enter, node }) => this.enteringCopertina(enter, node),
                                     length: 1,
                                     delay: 0.6
                                 }} to={`/copertina/${copertina.node.id}/`} className="copertina" key={id}>
@@ -150,7 +149,7 @@ class ArtGallery extends React.Component {
                                 length: 1
                             }}
                                 entry={{
-                                    trigger: ({ enter, node }) => this.entering(enter, node),
+                                    trigger: ({ enter, node }) => this.enteringCopertina(enter, node),
                                     length: 1,
                                     delay: 0.6
                                 }} to={`/copertina/${copertina.node.id}/`} className="copertina" key={id}>
@@ -167,7 +166,7 @@ class ArtGallery extends React.Component {
                                 length: 1
                             }}
                                 entry={{
-                                    trigger: ({ enter, node }) => this.entering(enter, node),
+                                    trigger: ({ enter, node }) => this.enteringCopertina(enter, node),
                                     length: 1,
                                     delay: 0.6
                                 }} to={`/copertina/${copertina.node.id}/`} className="copertina" key={id}>

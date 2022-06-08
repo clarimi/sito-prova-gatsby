@@ -69,4 +69,82 @@ header {
     text-align: center;
     text-decoration: none;
     color: black !important;
+    font-family: 'Karla', sans-serif;
+  
 }
+
+.titolo-manifesto {
+    margin-top: 150px;
+    font-size: 56px;
+    text-align: center;
+}
+
+.testo-manifesto {
+    font-size: 16px;
+    text-align: center;
+    margin-left: 300px;
+    margin-right: 300px;
+}
+
+.copertina-dettaglio {
+    margin-left: 300px;
+    margin-top: 160px;
+    justify-content: center;
+    display: inline-flex;
+    gap: 56px;
+}
+
+.copertina-info {
+    min-width: 300px;
+    max-width: 420px;
+}
+
+
+.titolo-specifiche {
+    margin-top: 150px;
+    font-size: 56px;
+    text-align: center;
+}
+
+.testo-specifiche {
+    font-size: 16px;
+    text-align: center;
+    margin-left: 300px;
+    margin-right: 300px;
+}
+
+
+.titolo-proprieta {
+    margin-top: 150px;
+    font-size: 56px;
+    text-align: center;
+}
+
+.testo-proprieta {
+    font-size: 16px;
+    text-align: center;
+    margin-left: 300px;
+    margin-right: 300px;
+}
+
+.titolo-artisti {
+    margin-top: 100px;
+    font-size: 56px;
+    text-align: center;
+}
+
+.lista-artisti {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    list-style-type: none;
+    padding-left: 0;
+
+    li {
+        border: 1px solid black;
+        padding: 6px 16px 8px 16px;
+        border-radius: 50px;
+    
+    }
+}
+
