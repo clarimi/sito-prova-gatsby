@@ -14,7 +14,7 @@ class Navbar extends React.Component {
     console.log(this.props);
   }
   leaving() {
-    if (this.props.page && this.props.page == "home") {
+    if (this.props.page && this.props.page === "home") {
       console.log("leaving home")
       gsap.to(".art-gallery", {
         opacity: 0,

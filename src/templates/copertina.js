@@ -11,7 +11,9 @@ export const query = graphql`
   query($id: String!) {
     contentfulCopertina(id: {eq: $id}) {
         id
-        descrizione
+        descrizione {
+            descrizione
+        }
         titolo
         immagine {
             gatsbyImage(width: 360)
@@ -33,7 +35,7 @@ const Copertina = props => {
                     </div>
                     <div className="copertina-info">
                         <h1>{props.data.contentfulCopertina.titolo}</h1>
-                        <p>{props.data.contentfulCopertina.descrizione}</p>
+                        <p>{props.data.contentfulCopertina.descrizione?.descrizione}</p>
                     </div>
                 </div>
             </div>

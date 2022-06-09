@@ -29,13 +29,25 @@ const AboutPage = () => {
             ARTISTI</h2>
           <ul className="lista-artisti">
             <li>
-              🌱 Mattia Corciulo
+              ✨ Giorgia Marzari
             </li>
             <li>
-              🌱 Mattia Corciulo
+              📌 Elisa Martini
             </li>
             <li>
-              🌱 Mattia Corciulo
+              🌱 Clarice Mirandola
+            </li>
+            <li>
+              🌙 Mattia Corciulo
+            </li>
+            <li>
+              📕 Matilde Mirandola
+            </li>
+            <li>
+              🍃Nicole Tecchio
+            </li>
+            <li>
+              🫀 Alice Alessandria
             </li>
           </ul>
         </div>

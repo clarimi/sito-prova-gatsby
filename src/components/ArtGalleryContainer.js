@@ -13,7 +13,6 @@ const ArtGalleryContainer = () => {
             node {
             id
             titolo
-            descrizione
             immagine {
                 gatsbyImage(width: 260)
             }
