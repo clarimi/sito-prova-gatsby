@@ -13,7 +13,7 @@ gsap.registerPlugin(ScrollSmoother)
 
 // Sto usando una classe
 class ArtGallery extends React.Component {
-
+    colonne = [];
     constructor(props) {
         super(props);
         this.showDetails = this.showDetails.bind(this);
@@ -27,7 +27,6 @@ class ArtGallery extends React.Component {
     }
 
     leaving() {
-        console.log("leaving art gallery");
         gsap.to(".art-gallery", {
             opacity: 0,
             scale: 0.94,
@@ -46,19 +45,27 @@ class ArtGallery extends React.Component {
     }
 
     componentDidMount() {
+
         const colonne = 3;
+
+        const spazioCopertina = 320;
 
         for (let index = 0; index < colonne; index++) {
 
             const nomeColonna = "#colonna-" + (index + 1)
+            const elencoCopertineColonna = this.colonne[index];
 
-            let translateYFrom = -1080;
-            let translateYTo = 0;
+            const maxY = -(spazioCopertina * elencoCopertineColonna.length);
+
+            let translateYFrom = maxY;
+            let translateYTo = 100;
 
             if (index === 1) {
                 translateYFrom = 150;
-                translateYTo = -1080;
+                translateYTo = maxY;
             }
+
+
             gsap.fromTo(nomeColonna,
                 { // FROM
                     translateY: translateYFrom
@@ -91,7 +98,7 @@ class ArtGallery extends React.Component {
         gsap.set(".art-gallery__column", { transformOrigin: "right center", force3D: true });
 
         gsap.from("#colonna-1, #colonna-3", {
-            translateY: -1400,
+            translateY: -1600,
             opacity: 0,
             duration: 0.8,
             ease: Power1.easeOut
@@ -121,6 +128,7 @@ class ArtGallery extends React.Component {
         const colonna1 = copertine.filter((copertina, indice) => (indice + 1) % 3 === 1);
         const colonna2 = copertine.filter((copertina, indice) => (indice + 1) % 3 === 2);
         const colonna3 = copertine.filter((copertina, indice) => (indice + 1) % 3 === 0);
+        this.colonne = [colonna1, colonna2, colonna3];
 
         return (
             <div id="smooth-wrapper">
