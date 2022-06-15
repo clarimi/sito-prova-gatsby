@@ -2,6 +2,7 @@
 import * as React from "react"
 import TransitionLink from 'gatsby-plugin-transition-link';
 import { gsap, Power1 } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 
 import logo from '../images/logoveroneser.svg'
@@ -51,6 +52,43 @@ class Navbar extends React.Component {
     })
   }
 
+  componentDidMount() {
+
+
+
+
+
+
+
+    let logoMostrato = true;
+
+    ScrollTrigger.create({
+      onUpdate: (self) => {
+
+
+        const soglia = 0.01;
+
+        if (self.progress > soglia && logoMostrato == true) {
+          gsap.to(".logo-image", {
+            translateY: -50,
+            duration: 0.15,
+            opacity: 0
+          });
+          logoMostrato = false;
+        }
+
+        if (self.progress < soglia && logoMostrato == false) {
+          gsap.to(".logo-image", {
+            translateY: 0,
+            duration: 0.15,
+            opacity: 1
+          });
+          logoMostrato = true;
+        }
+      }
+    });
+
+  }
   render() {
     return (
       <header className="header">
@@ -71,7 +109,7 @@ class Navbar extends React.Component {
           trigger: () => this.enteringInHome(),
           length: 1,
           delay: 0.6
-        }} to="/"><img src={logo} className="logo" /></TransitionLink>
+        }} to="/" className="logo-image"><img src={logo} className="logo" /></TransitionLink>
 
         <TransitionLink exit={{
           trigger: () => this.leaving(),

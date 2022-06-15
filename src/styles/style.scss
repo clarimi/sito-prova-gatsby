@@ -153,3 +153,19 @@ header {
     }
 }
 
+.nav-link {
+    padding: 6px 16px 8px 16px;
+    text-decoration: none;
+    position: fixed;
+    top: calc(50% - 16px);
+    background-color: black;
+    color: white;
+}
+
+.nav-link__prev {
+left: 0;
+}
+
+.nav-link__next {
+    right: 0;
+}

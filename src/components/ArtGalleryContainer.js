@@ -8,7 +8,7 @@ import ArtGallery from "./ArtGallery"
 const ArtGalleryContainer = () => {
     const copertineData = useStaticQuery(graphql`
     query QueryTutteCopertine {
-        allContentfulCopertina {
+        allContentfulCopertina(sort: {fields: index, order: ASC}) {
         edges {
             node {
             id
