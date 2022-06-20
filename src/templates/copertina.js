@@ -7,6 +7,7 @@ import { GatsbyImage, StaticImage } from "gatsby-plugin-image";
 import FontImport from "../components/FontImport"
 
 
+
 export const query = graphql`
   query($id: String!) {
     contentfulCopertina(id: {eq: $id}) {
@@ -15,6 +16,7 @@ export const query = graphql`
             descrizione
         }
         titolo
+        sottotitolo
         immagine {
             gatsbyImage(width: 360)
         }
@@ -28,7 +30,7 @@ export const query = graphql`
       }
   }
 `
-
+// ordine delle copertine in base a index
 const Copertina = props => {
 
     const elencoIdCopertine = props.data.allContentfulCopertina.edges.map((elemento) => {
@@ -64,10 +66,11 @@ const Copertina = props => {
                     </div>
                     <div className="copertina-info">
                         <h1>{props.data.contentfulCopertina.titolo}</h1>
-                        <h4>sottotitolo</h4>
+                        <h4>{props.data.contentfulCopertina.sottotitolo}</h4>
                         <p>{props.data.contentfulCopertina.descrizione?.descrizione}</p>
                     </div>
                 </div>
+
 
                 {idPrecedenteCopertina != null && (
                     <Link className="nav-link nav-link__prev" to={`/copertina/${idPrecedenteCopertina}/`} >prev</Link>

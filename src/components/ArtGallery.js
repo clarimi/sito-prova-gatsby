@@ -55,28 +55,69 @@ class ArtGallery extends React.Component {
             const nomeColonna = "#colonna-" + (index + 1)
             const elencoCopertineColonna = this.colonne[index];
 
-            const maxY = -(spazioCopertina * elencoCopertineColonna.length);
+            // const maxY = -(spazioCopertina * elencoCopertineColonna.length);
+            // console.log(maxY);
 
-            let translateYFrom = maxY;
-            let translateYTo = 100;
 
             if (index === 1) {
-                translateYFrom = 150;
-                translateYTo = maxY;
+
+                gsap.set(nomeColonna, {
+                    translateY: 150
+                });
+
+                gsap.from(nomeColonna, {
+                    translateY: 300,
+                    opacity: 0,
+                    duration: 0.8,
+                    ease: Power1.easeOut
+                });
+
+                gsap.fromTo(nomeColonna,
+                    { // FROM
+                        translateY: 150
+                    }, { // TO
+                    translateY: -1600,
+                    scrollTrigger: {
+                        trigger: ".art-gallery-space",
+                        start: "top top",
+                        scrub: true,
+                    }
+                }, {
+                    delay: 0.8
+                });
+
+            } else {
+
+                gsap.set(nomeColonna, {
+                    translateY: -1600
+                });
+
+                gsap.from(nomeColonna, {
+                    translateY: -1750,
+                    opacity: 0,
+                    duration: 0.8,
+                    ease: Power1.easeOut
+                });
+
+                gsap.fromTo(nomeColonna,
+                    { // FROM
+                        translateY: -1600
+                    }, { // TO
+                    translateY: 150,
+                    scrollTrigger: {
+                        trigger: ".art-gallery-space",
+                        start: "top top",
+                        scrub: true,
+                    }
+                }, {
+                    delay: 0.8
+                });
+
             }
 
 
-            gsap.fromTo(nomeColonna,
-                { // FROM
-                    translateY: translateYFrom
-                }, { // TO
-                translateY: translateYTo,
-                scrollTrigger: {
-                    trigger: ".art-gallery-space",
-                    start: "top top",
-                    scrub: true,
-                }
-            });
+
+
         }
 
         let proxy = { skew: 0 },
@@ -97,19 +138,14 @@ class ArtGallery extends React.Component {
         // make the right edge "stick" to the scroll bar. force3D: true improves performance
         gsap.set(".art-gallery__column", { transformOrigin: "right center", force3D: true });
 
-        gsap.from("#colonna-1, #colonna-3", {
-            translateY: -1600,
-            opacity: 0,
-            duration: 0.8,
-            ease: Power1.easeOut
-        });
 
-        gsap.from("#colonna-2", {
-            translateY: 300,
-            opacity: 0,
-            duration: 0.8,
-            ease: Power1.easeOut
-        });
+
+        // gsap.from("#colonna-2", {
+        //     translateY: 300,
+        //     opacity: 0,
+        //     duration: 0.8,
+        //     ease: Power1.easeOut
+        // });
     }
 
     showDetails(copertina) {
@@ -124,6 +160,7 @@ class ArtGallery extends React.Component {
 
     render() {
         const copertine = this.props.data.allContentfulCopertina.edges;
+
 
         const colonna1 = copertine.filter((copertina, indice) => (indice + 1) % 3 === 1);
         const colonna2 = copertine.filter((copertina, indice) => (indice + 1) % 3 === 2);

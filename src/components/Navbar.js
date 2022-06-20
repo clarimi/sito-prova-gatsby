@@ -15,8 +15,8 @@ class Navbar extends React.Component {
     console.log(this.props);
   }
   leaving() {
+    console.log("leaving home")
     if (this.props.page && this.props.page === "home") {
-      console.log("leaving home")
       gsap.to(".art-gallery", {
         opacity: 0,
         scale: 0.94,
@@ -44,6 +44,7 @@ class Navbar extends React.Component {
   }
 
   entering() {
+    console.log("entering")
     gsap.from(".page", {
       translateY: 30,
       opacity: 0,
