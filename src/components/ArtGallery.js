@@ -44,11 +44,9 @@ class ArtGallery extends React.Component {
         })
     }
 
-    componentDidMount() {
+    animaCopertine() {
 
         const colonne = 3;
-
-        const spazioCopertina = 320;
 
         for (let index = 0; index < colonne; index++) {
 
@@ -112,12 +110,7 @@ class ArtGallery extends React.Component {
                 }, {
                     delay: 0.8
                 });
-
             }
-
-
-
-
         }
 
         let proxy = { skew: 0 },
@@ -138,14 +131,23 @@ class ArtGallery extends React.Component {
         // make the right edge "stick" to the scroll bar. force3D: true improves performance
         gsap.set(".art-gallery__column", { transformOrigin: "right center", force3D: true });
 
+    }
+
+    componentDidMount() {
+        gsap.to("#preloader", {
+            opacity: 0,
+            duration: 0.8,
+            delay: 2,
+            onStart: () => {
+                var body = document.querySelector("body");
+                body.classList.remove("preloader_active");
+                body.classList.remove("preloader_ready");
+                this.animaCopertine();
+            },
+            ease: Power1.easeOut
+        });
 
 
-        // gsap.from("#colonna-2", {
-        //     translateY: 300,
-        //     opacity: 0,
-        //     duration: 0.8,
-        //     ease: Power1.easeOut
-        // });
     }
 
     showDetails(copertina) {
@@ -172,7 +174,7 @@ class ArtGallery extends React.Component {
                 <div className="art-gallery" id="smooth-content">
                     <div className="art-gallery__column" id="colonna-1">
                         {colonna1.map((copertina, id) => (
-                            <TransitionLink exit={{
+                            <TransitionLink key={{ id }} exit={{
                                 trigger: ({ exit, node }) => this.leaving(exit, node),
                                 length: 1
                             }}
@@ -189,7 +191,7 @@ class ArtGallery extends React.Component {
 
                     <div className="art-gallery__column" id="colonna-2">
                         {colonna2.map((copertina, id) => (
-                            <TransitionLink exit={{
+                            <TransitionLink key={{ id }} exit={{
                                 trigger: ({ exit, node }) => this.leaving(exit, node),
                                 length: 1
                             }}
@@ -206,7 +208,7 @@ class ArtGallery extends React.Component {
 
                     <div className="art-gallery__column" id="colonna-3">
                         {colonna3.map((copertina, id) => (
-                            <TransitionLink exit={{
+                            <TransitionLink key={{ id }} exit={{
                                 trigger: ({ exit, node }) => this.leaving(exit, node),
                                 length: 1
                             }}

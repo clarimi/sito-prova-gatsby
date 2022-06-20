@@ -14,7 +14,10 @@ const ArtGalleryContainer = () => {
             id
             titolo
             immagine {
-                gatsbyImage(width: 260)
+                gatsbyImage(
+                    width: 260
+                    placeholder: NONE
+                )
             }
             }
         }
