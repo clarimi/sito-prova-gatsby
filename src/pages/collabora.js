@@ -8,7 +8,6 @@ import { animaPreloader } from "../scripts/preloader"
 // markup
 const CollaboraPage = () => {
     animaPreloader();
-
     return (
         <main>
             <title>
