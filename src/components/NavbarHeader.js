@@ -10,10 +10,6 @@ import logo from '../images/logoveroneser.svg'
 
 // Sto usando una funzione
 class NavbarHeader extends React.Component {
-  constructor(props) {
-    super(props);
-    console.log(this.props);
-  }
   leaving() {
     console.log("leaving home")
     if (this.props.page && this.props.page === "home") {

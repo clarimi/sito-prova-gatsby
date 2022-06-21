@@ -4,6 +4,7 @@ import NavbarHeader from "../components/NavbarHeader"
 import "../styles/style.scss";
 import { GatsbyImage } from "gatsby-plugin-image";
 import FontImport from "../components/FontImport"
+import { animaPreloader } from './../scripts/preloader';
 
 
 
@@ -31,6 +32,7 @@ export const query = graphql`
 `
 // ordine delle copertine in base a index
 const Copertina = props => {
+    animaPreloader();
 
     const elencoIdCopertine = props.data.allContentfulCopertina.edges.map((elemento) => {
         return elemento.node.id;
@@ -51,6 +53,7 @@ const Copertina = props => {
     if (indicePrecedenteCopertina >= 0) {
         idPrecedenteCopertina = elencoIdCopertine[indicePrecedenteCopertina];
     }
+
 
 
     return (
