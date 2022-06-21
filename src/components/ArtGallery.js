@@ -1,9 +1,8 @@
 import * as React from "react";
-import { gsap, Power1 } from "gsap";
+import { gsap, Power1, Power4 } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { GatsbyImage, StaticImage } from "gatsby-plugin-image";
+import { GatsbyImage } from "gatsby-plugin-image";
 import { ScrollSmoother } from "./../ext-libs/ScrollSmoother";
-import { Link } from "gatsby"
 import TransitionLink from 'gatsby-plugin-transition-link';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -26,6 +25,7 @@ class ArtGallery extends React.Component {
         };
     }
 
+    //dichiaro animazione dell'uscita da artgallery verso il dettaglio
     leaving() {
         gsap.to(".art-gallery", {
             opacity: 0,
@@ -34,7 +34,7 @@ class ArtGallery extends React.Component {
             ease: Power1.easeIn
         })
     }
-
+    //dichiaro animazione dell'entrata nel dettaglio copertina
     enteringCopertina() {
         gsap.from(".copertina-dettaglio", {
             translateY: 30,
@@ -47,18 +47,19 @@ class ArtGallery extends React.Component {
     animaCopertine() {
 
         const colonne = 3;
+        const spazioCopertina = 320;
 
         for (let index = 0; index < colonne; index++) {
 
             const nomeColonna = "#colonna-" + (index + 1)
             const elencoCopertineColonna = this.colonne[index];
 
-            // const maxY = -(spazioCopertina * elencoCopertineColonna.length);
-            // console.log(maxY);
+            //la grandezza dello scroll si adatta in base a quante copertine ci sono nella colonna
+            const maxY = -(spazioCopertina * elencoCopertineColonna.length);
 
 
             if (index === 1) {
-
+                //animazione dopo il caricamento della colonna centrale
                 gsap.set(nomeColonna, {
                     translateY: 150
                 });
@@ -70,60 +71,65 @@ class ArtGallery extends React.Component {
                     ease: Power1.easeOut
                 });
 
+                //animazione dello scroll della colonna centrale
                 gsap.fromTo(nomeColonna,
                     { // FROM
                         translateY: 150
                     }, { // TO
-                    translateY: -1600,
+                    translateY: maxY,
                     scrollTrigger: {
                         trigger: ".art-gallery-space",
                         start: "top top",
-                        scrub: true,
+                        scrub: 2
                     }
                 }, {
-                    delay: 0.8
+                    delay: 0.8,
+                    ease: Power4.easeOut
                 });
 
             } else {
-
+                //animazione colonne 0 e 2
                 gsap.set(nomeColonna, {
-                    translateY: -1600
+                    translateY: maxY
                 });
 
                 gsap.from(nomeColonna, {
-                    translateY: -1750,
+                    translateY: maxY - 150,
                     opacity: 0,
                     duration: 0.8,
                     ease: Power1.easeOut
                 });
 
+                //animazione dello scroll delle colonne 0 e 2
                 gsap.fromTo(nomeColonna,
                     { // FROM
-                        translateY: -1600
+                        translateY: maxY
                     }, { // TO
                     translateY: 150,
                     scrollTrigger: {
                         trigger: ".art-gallery-space",
                         start: "top top",
-                        scrub: true,
+                        scrub: 2
                     }
                 }, {
-                    delay: 0.8
+                    delay: 0.8,
+                    ease: Power4.easeOut
                 });
             }
         }
 
         let proxy = { skew: 0 },
             skewSetter = gsap.quickSetter(".art-gallery__column", "rotateX", "deg"),
-            clamp = gsap.utils.clamp(-12, 12); // don't let the skew go beyond 20 degrees. 
+            clamp = gsap.utils.clamp(-20, 20); // don't let the skew go beyond 20 degrees. 
 
         ScrollTrigger.create({
+            scrub: 4,
             onUpdate: (self) => {
-                let skew = clamp(self.getVelocity() / 2000);
+                let skew = clamp(self.getVelocity() / 1000);
                 // only do something if the skew is MORE severe. Remember, we're always tweening back to 0, so if the user slows their scrolling quickly, it's more natural to just let the tween handle that smoothly rather than jumping to the smaller skew.
                 if (Math.abs(skew) > Math.abs(proxy.skew)) {
                     proxy.skew = skew;
-                    gsap.to(proxy, { skew: 0, duration: 0.8, ease: "power3", overwrite: true, onUpdate: () => skewSetter(proxy.skew) });
+                    gsap.to(proxy, { skew: 0, duration: 0.8, ease: Power1.easeInOut, overwrite: true, onUpdate: () => skewSetter(proxy.skew) });
                 }
             }
         });
@@ -133,13 +139,14 @@ class ArtGallery extends React.Component {
 
     }
 
-    componentDidMount() {
+    animaPreloader() {
+        var body = document.querySelector("body");
+
         gsap.to("#preloader", {
             opacity: 0,
             duration: 0.8,
             delay: 2,
             onStart: () => {
-                var body = document.querySelector("body");
                 body.classList.remove("preloader_active");
                 body.classList.remove("preloader_ready");
                 this.animaCopertine();
@@ -147,6 +154,34 @@ class ArtGallery extends React.Component {
             ease: Power1.easeOut
         });
 
+        gsap.to("#the", {
+            y: -400,
+            duration: 1,
+            delay: 1,
+            ease: Power1.easeOut
+        });
+
+        gsap.to("#veroneser", {
+            y: 400,
+            duration: 1,
+            delay: 1,
+            ease: Power1.easeOut
+        })
+        gsap.to("#testocentro", {
+            opacity: 0,
+            duration: 1,
+            delay: 1,
+            ease: Power1.easeOut
+        })
+    }
+
+    componentDidMount() {
+        var body = document.querySelector("body");
+        if (body.classList.contains("preloader_active") == false) {
+            this.animaCopertine();
+        } else {
+            this.animaPreloader();
+        }
 
     }
 
@@ -155,7 +190,7 @@ class ArtGallery extends React.Component {
             copertina: {
                 immagine: copertina.node.immagine.gatsbyImage,
                 titolo: copertina.node.titolo,
-                testo: "qweewq"
+                testo: "testo"
             }
         });
     }
@@ -182,7 +217,7 @@ class ArtGallery extends React.Component {
                                     trigger: ({ enter, node }) => this.enteringCopertina(enter, node),
                                     length: 1,
                                     delay: 0.6
-                                }} to={`/copertina/${copertina.node.id}/`} className="copertina" key={id}>
+                                }} to={`/copertina/${copertina.node.id}/`} className="copertina">
                                 <GatsbyImage image={copertina.node.immagine.gatsbyImage} alt={copertina.node.titolo} loading="eager" />
                             </TransitionLink>
                         ))}
@@ -199,7 +234,7 @@ class ArtGallery extends React.Component {
                                     trigger: ({ enter, node }) => this.enteringCopertina(enter, node),
                                     length: 1,
                                     delay: 0.6
-                                }} to={`/copertina/${copertina.node.id}/`} className="copertina" key={id}>
+                                }} to={`/copertina/${copertina.node.id}/`} className="copertina">
                                 <GatsbyImage image={copertina.node.immagine.gatsbyImage} alt={copertina.node.titolo} loading="eager" />
                             </TransitionLink>
                         ))}
@@ -216,7 +251,7 @@ class ArtGallery extends React.Component {
                                     trigger: ({ enter, node }) => this.enteringCopertina(enter, node),
                                     length: 1,
                                     delay: 0.6
-                                }} to={`/copertina/${copertina.node.id}/`} className="copertina" key={id}>
+                                }} to={`/copertina/${copertina.node.id}/`} className="copertina">
                                 <GatsbyImage image={copertina.node.immagine.gatsbyImage} alt={copertina.node.titolo} loading="eager" />
                             </TransitionLink>
                         ))}

@@ -44,7 +44,7 @@ const AboutPage = () => {
               📕 Matilde Mirandola
             </li>
             <li>
-              🍃Nicole Tecchio
+              🍃 Nicole Tecchio
             </li>
             <li>
               🫀 Alice Alessandria

@@ -69,7 +69,7 @@ class Navbar extends React.Component {
 
         const soglia = 0.01;
 
-        if (self.progress > soglia && logoMostrato == true) {
+        if (self.progress > soglia && logoMostrato === true) {
           gsap.to(".logo-image", {
             translateY: -50,
             duration: 0.15,
@@ -78,11 +78,12 @@ class Navbar extends React.Component {
           logoMostrato = false;
         }
 
-        if (self.progress < soglia && logoMostrato == false) {
+        if (self.progress < soglia && logoMostrato === false) {
           gsap.to(".logo-image", {
             translateY: 0,
             duration: 0.15,
-            opacity: 1
+            opacity: 1,
+            delay: 1,
           });
           logoMostrato = true;
         }
@@ -104,20 +105,20 @@ class Navbar extends React.Component {
           }} to="/about" className="link-navbar">ABOUT</TransitionLink>
 
         <TransitionLink exit={{
-          trigger: ({ }) => this.leaving(),
+          trigger: () => this.leaving(),
           length: 1
         }} entry={{
           trigger: () => this.enteringInHome(),
           length: 1,
           delay: 0.6
-        }} to="/" className="logo-image"><img src={logo} className="logo" /></TransitionLink>
+        }} to="/" className="logo-image" ><img alt="Logo The Veroneser" src={logo} className="logo" /></TransitionLink>
 
         <TransitionLink exit={{
           trigger: () => this.leaving(),
           length: 1
         }}
           entry={{
-            trigger: ({ }) => this.entering(),
+            trigger: () => this.entering(),
             length: 1,
             delay: 0.6
           }} to="/collabora" className="link-navbar">COLLABORA</TransitionLink>

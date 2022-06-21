@@ -16,7 +16,6 @@ const ArtGalleryContainer = () => {
             immagine {
                 gatsbyImage(
                     width: 260
-                    placeholder: NONE
                 )
             }
             }
