@@ -173,41 +173,32 @@ left: 0;
     right: 0;
 }
 
-.button {
-    display: flex;
-   position: relative;
-    top:50%;
+.button-collabora {
+    display: inline-block;
+    position: relative;
     background-color:white;
     color: black;
     font-size: 14px;
-   
-    margin-top: 70px;
     border: 1px solid black;
     padding: 14px 48px 16px 48px;
     border-radius: 50px;
- 
-    top: 50%;
-    left: 50%;
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
     cursor: pointer;
 
     box-shadow: inset 0 0 0 0 black;
-    -webkit-transition: ease-out 0.4s;
-    -moz-transition: ease-out 0.4s;
     transition: ease-out 0.4s;
+    text-decoration: none;
     
    
 }
 
-.button:hover {
-
+.button-collabora:hover {
     box-shadow: inset 400px 0 0 0 black;
     color: #ffffff;
 }
 
 
-.button-collabora {
+.button-collabora-container {
     text-align: center;
-    position: relative;
+    margin-top: 70px;
+    // position: relative;
 }

@@ -1,5 +1,6 @@
 import * as React from "react"
 import { Link } from "gatsby"
+import { animaPreloader } from "../scripts/preloader"
 
 // styles
 const pageStyles = {
@@ -26,6 +27,8 @@ const codeStyles = {
 
 // markup
 const NotFoundPage = () => {
+  animaPreloader();
+
   return (
     <main style={pageStyles}>
       <title>Not found</title>

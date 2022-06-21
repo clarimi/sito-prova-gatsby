@@ -8,7 +8,6 @@ exports.onRenderBody = ({
 }) => {
     setHeadComponents([
         <link as="script" rel="preload" href="/scripts/preloader.js" />,
-
     ])
     setPreBodyComponents([
         <div id="preloader">

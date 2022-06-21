@@ -4,6 +4,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { GatsbyImage } from "gatsby-plugin-image";
 import { ScrollSmoother } from "./../ext-libs/ScrollSmoother";
 import TransitionLink from 'gatsby-plugin-transition-link';
+import { animaPreloader } from './../scripts/preloader';
 
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(ScrollSmoother)
@@ -139,48 +140,14 @@ class ArtGallery extends React.Component {
 
     }
 
-    animaPreloader() {
-        var body = document.querySelector("body");
-
-        gsap.to("#preloader", {
-            opacity: 0,
-            duration: 0.8,
-            delay: 2,
-            onStart: () => {
-                body.classList.remove("preloader_active");
-                body.classList.remove("preloader_ready");
-                this.animaCopertine();
-            },
-            ease: Power1.easeOut
-        });
-
-        gsap.to("#the", {
-            y: -400,
-            duration: 1,
-            delay: 1,
-            ease: Power1.easeOut
-        });
-
-        gsap.to("#veroneser", {
-            y: 400,
-            duration: 1,
-            delay: 1,
-            ease: Power1.easeOut
-        })
-        gsap.to("#testocentro", {
-            opacity: 0,
-            duration: 1,
-            delay: 1,
-            ease: Power1.easeOut
-        })
-    }
-
     componentDidMount() {
         var body = document.querySelector("body");
         if (body.classList.contains("preloader_active") == false) {
             this.animaCopertine();
         } else {
-            this.animaPreloader();
+            animaPreloader(() => {
+                this.animaCopertine();
+            });
         }
 
     }

@@ -2,10 +2,12 @@
 import * as React from "react"
 import FontImport from "../components/FontImport"
 import Navbar from "../components/navbar"
+import { animaPreloader } from "../scripts/preloader"
 
 
 // markup
 const AboutPage = () => {
+  animaPreloader();
   return (
     <main>
       <title>

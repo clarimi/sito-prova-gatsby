@@ -16,7 +16,6 @@ const IndexPage = () => {
       <Navbar page="home"></Navbar>
       <div className="page">
         <ArtGalleryContainer></ArtGalleryContainer>
-
       </div>
     </main>
   )
