@@ -1,5 +1,5 @@
 import * as React from "react"
-import Navbar from "../components/Navbar"
+import NavbarHeader from "../components/NavbarHeader"
 import "../styles/style.scss"
 import ArtGalleryContainer from "../components/ArtGalleryContainer"
 import FontImport from "../components/FontImport"
@@ -13,7 +13,7 @@ const IndexPage = () => {
     <main>
       <FontImport></FontImport>
       <title>Home Page</title>
-      <Navbar page="home"></Navbar>
+      <NavbarHeader page="home"></NavbarHeader>
       <div className="page">
         <ArtGalleryContainer></ArtGalleryContainer>
       </div>

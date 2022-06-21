@@ -9,7 +9,7 @@ import logo from '../images/logoveroneser.svg'
 
 
 // Sto usando una funzione
-class Navbar extends React.Component {
+class NavbarHeader extends React.Component {
   constructor(props) {
     super(props);
     console.log(this.props);
@@ -130,4 +130,4 @@ class Navbar extends React.Component {
 
 
 
-export default Navbar
+export default NavbarHeader

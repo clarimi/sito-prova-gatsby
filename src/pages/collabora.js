@@ -1,7 +1,7 @@
 
 import * as React from "react"
 import FontImport from "../components/FontImport"
-import Navbar from "../components/navbar"
+import NavbarHeader from "../components/NavbarHeader"
 import { animaPreloader } from "../scripts/preloader"
 
 
@@ -14,7 +14,7 @@ const CollaboraPage = () => {
             <title>
                 Collabora
             </title>
-            <Navbar></Navbar>
+            <NavbarHeader></NavbarHeader>
             <FontImport></FontImport>
             <div className="page">
                 <div className="collabora-parteuno">

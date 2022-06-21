@@ -1,4 +1,4 @@
-import { gsap, Power1, Power4 } from "gsap";
+import { gsap, Power1 } from "gsap";
 
 export function animaPreloader(animaCopertine) {
     var body = document.querySelector("body");

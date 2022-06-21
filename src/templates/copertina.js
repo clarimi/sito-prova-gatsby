@@ -1,9 +1,8 @@
 import React from "react"
 import { graphql, Link } from "gatsby"
-import Navbar from "../components/Navbar"
-import "../styles/style.scss"
-import ArtGalleryContainer from "../components/ArtGalleryContainer"
-import { GatsbyImage, StaticImage } from "gatsby-plugin-image";
+import NavbarHeader from "../components/NavbarHeader"
+import "../styles/style.scss";
+import { GatsbyImage } from "gatsby-plugin-image";
 import FontImport from "../components/FontImport"
 
 
@@ -57,7 +56,7 @@ const Copertina = props => {
     return (
         <main>
             <title>Home Page</title>
-            <Navbar></Navbar>
+            <NavbarHeader></NavbarHeader>
             <FontImport></FontImport>
             <div className="page">
                 <div className="copertina-dettaglio">
