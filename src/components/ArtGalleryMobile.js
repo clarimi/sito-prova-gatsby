@@ -31,7 +31,12 @@ class ArtGalleryMobile extends React.Component {
         })
     }
     animaCopertine() {
-
+        gsap.from(".copertine-mobile-container", {
+            translateY: 150,
+            opacity: 0,
+            duration: 0.8,
+            ease: Power1.easeOut
+        });
     }
 
     componentDidMount() {
