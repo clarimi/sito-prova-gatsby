@@ -1,8 +1,10 @@
 
 import * as React from "react"
 import FontImport from "../components/FontImport"
-import NavbarHeader from "../components/NavbarHeader"
+import NavbarHeaderContainer from "../components/NavbarHeaderContainer"
+
 import { animaPreloader } from "../scripts/preloader"
+import { Helmet } from "react-helmet"
 
 
 // markup
@@ -10,10 +12,10 @@ const AboutPage = () => {
   animaPreloader();
   return (
     <main>
-      <title>
-        About
-      </title>
-      <NavbarHeader></NavbarHeader>
+      <Helmet>
+        <title>About - The Veroneser</title>
+      </Helmet>
+      <NavbarHeaderContainer></NavbarHeaderContainer>
       <FontImport></FontImport>
       <div className="page">
         <div className="manifesto">

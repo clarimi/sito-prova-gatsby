@@ -2,6 +2,7 @@
 import { graphql, useStaticQuery } from "gatsby"
 import * as React from "react"
 import ArtGallery from "./ArtGallery"
+import ArtGalleryMobile from "./ArtGalleryMobile"
 
 
 // markup
@@ -24,7 +25,14 @@ const ArtGalleryContainer = () => {
     }`);
 
     return (
-        <ArtGallery data={copertineData}></ArtGallery>
+        <main>
+            <div className="si-mobile">
+                <ArtGalleryMobile data={copertineData} className="si-mobile"></ArtGalleryMobile>
+            </div>
+            <div className="no-mobile">
+                <ArtGallery data={copertineData} className="si-mobile"></ArtGallery>
+            </div>
+        </main>
     )
 }
 

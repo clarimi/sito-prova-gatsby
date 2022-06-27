@@ -11,7 +11,6 @@ import logo from '../images/logoveroneser.svg'
 // Sto usando una funzione
 class NavbarHeader extends React.Component {
   leaving() {
-    console.log("leaving home")
     if (this.props.page && this.props.page === "home") {
       gsap.to(".art-gallery", {
         opacity: 0,
@@ -50,13 +49,6 @@ class NavbarHeader extends React.Component {
   }
 
   componentDidMount() {
-
-
-
-
-
-
-
     let logoMostrato = true;
 
     ScrollTrigger.create({
@@ -66,7 +58,7 @@ class NavbarHeader extends React.Component {
         const soglia = 0.01;
 
         if (self.progress > soglia && logoMostrato === true) {
-          gsap.to(".logo-image", {
+          gsap.to(".logo-image-desktop", {
             translateY: -50,
             duration: 0.15,
             opacity: 0
@@ -75,7 +67,7 @@ class NavbarHeader extends React.Component {
         }
 
         if (self.progress < soglia && logoMostrato === false) {
-          gsap.to(".logo-image", {
+          gsap.to(".logo-image-desktop", {
             translateY: 0,
             duration: 0.15,
             opacity: 1,
@@ -89,7 +81,7 @@ class NavbarHeader extends React.Component {
   }
   render() {
     return (
-      <header className="header">
+      <header id="header">
         <TransitionLink exit={{
           trigger: () => this.leaving(),
           length: 1
@@ -107,7 +99,7 @@ class NavbarHeader extends React.Component {
           trigger: () => this.enteringInHome(),
           length: 1,
           delay: 0.6
-        }} to="/" className="logo-image" ><img alt="Logo The Veroneser" src={logo} className="logo" /></TransitionLink>
+        }} to="/" className="logo-image-desktop" ><img alt="Logo The Veroneser" src={logo} className="logo" /></TransitionLink>
 
         <TransitionLink exit={{
           trigger: () => this.leaving(),

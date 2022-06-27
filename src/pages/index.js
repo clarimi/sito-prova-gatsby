@@ -1,9 +1,10 @@
 import * as React from "react"
-import NavbarHeader from "../components/NavbarHeader"
+import NavbarHeaderContainer from "../components/NavbarHeaderContainer"
+
 import "../styles/style.scss"
 import ArtGalleryContainer from "../components/ArtGalleryContainer"
 import FontImport from "../components/FontImport"
-
+import { Helmet } from "react-helmet"
 
 
 
@@ -11,9 +12,11 @@ import FontImport from "../components/FontImport"
 const IndexPage = () => {
   return (
     <main>
+      <Helmet>
+        <title> Home Page - The Veroneser</title>
+      </Helmet>
       <FontImport></FontImport>
-      <title>Home Page</title>
-      <NavbarHeader page="home"></NavbarHeader>
+      <NavbarHeaderContainer page="home"></NavbarHeaderContainer>
       <div className="page">
         <ArtGalleryContainer></ArtGalleryContainer>
       </div>

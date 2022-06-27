@@ -1,11 +1,11 @@
 import React from "react"
 import { graphql, Link } from "gatsby"
-import NavbarHeader from "../components/NavbarHeader"
 import "../styles/style.scss";
 import { GatsbyImage } from "gatsby-plugin-image";
 import FontImport from "../components/FontImport"
 import { animaPreloader } from './../scripts/preloader';
-
+import NavbarHeaderContainer from "../components/NavbarHeaderContainer"
+import { Helmet } from "react-helmet"
 
 
 export const query = graphql`
@@ -58,8 +58,10 @@ const Copertina = props => {
 
     return (
         <main>
-            <title>Home Page</title>
-            <NavbarHeader></NavbarHeader>
+            <Helmet>
+                <title>{props.data.contentfulCopertina.titolo} - The Veroneser</title>
+            </Helmet>
+            <NavbarHeaderContainer page="home"></NavbarHeaderContainer>
             <FontImport></FontImport>
             <div className="page">
                 <div className="copertina-dettaglio">
@@ -75,11 +77,17 @@ const Copertina = props => {
 
 
                 {idPrecedenteCopertina != null && (
-                    <Link className="nav-link nav-link__prev" to={`/copertina/${idPrecedenteCopertina}/`} >prev</Link>
+                    <Link className="nav-link nav-link__prev" to={`/copertina/${idPrecedenteCopertina}/`} >
+                        <span className="no-mobile">prev</span>
+                        <span className="si-mobile">⟵</span>
+                    </Link>
                 )}
 
                 {idProssimaCopertina != null && (
-                    <Link className="nav-link nav-link__next" to={`/copertina/${idProssimaCopertina}/`} >next</Link>
+                    <Link className="nav-link nav-link__next" to={`/copertina/${idProssimaCopertina}/`} >
+                        <span className="no-mobile">next</span>
+                        <span className="si-mobile">⟶</span>
+                    </Link>
                 )}
             </div>
         </main>

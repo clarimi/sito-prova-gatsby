@@ -1,8 +1,10 @@
 
 import * as React from "react"
 import FontImport from "../components/FontImport"
-import NavbarHeader from "../components/NavbarHeader"
+import NavbarHeaderContainer from "../components/NavbarHeaderContainer"
 import { animaPreloader } from "../scripts/preloader"
+import { Helmet } from "react-helmet"
+
 
 
 // markup
@@ -10,11 +12,12 @@ const CollaboraPage = () => {
     animaPreloader();
     return (
         <main>
-            <title>
-                Collabora
-            </title>
-            <NavbarHeader></NavbarHeader>
+            <NavbarHeaderContainer page="home"></NavbarHeaderContainer>
             <FontImport></FontImport>
+            <Helmet>
+                <title>Collabora - The Veroneser</title>
+            </Helmet>
+
             <div className="page">
                 <div className="collabora-parteuno">
                     <h2 className="titolo-specifiche">
