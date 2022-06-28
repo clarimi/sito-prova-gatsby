@@ -239,7 +239,7 @@ body {
   align-items: center;
 
   .logo {
-    max-height: 50px;
+    max-height: 40px;
     text-align: left;
   }
 }
@@ -287,7 +287,7 @@ body {
   }
   .page {
     max-width: 80vw;
-    margin: 140px auto 20px auto;
+    margin: 140px auto 80px auto;
   }
   .copertina-dettaglio {
     display: flex;
@@ -304,13 +304,19 @@ body {
 
   .lista-artisti {
     flex-direction: column;
+    gap: 16px;
 
     li {
       padding: 14px 16px 16px 16px;
+      text-align: center;
     }
   }
 
   .nav-link {
-    padding: 10px;
+    padding: 10px 13px;
+  }
+
+  #testocentro {
+    width: 125%;
   }
 }

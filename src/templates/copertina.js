@@ -79,14 +79,14 @@ const Copertina = props => {
                 {idPrecedenteCopertina != null && (
                     <Link className="nav-link nav-link__prev" to={`/copertina/${idPrecedenteCopertina}/`} >
                         <span className="no-mobile">prev</span>
-                        <span className="si-mobile">⟵</span>
+                        <span className="si-mobile">❮</span>
                     </Link>
                 )}
 
                 {idProssimaCopertina != null && (
                     <Link className="nav-link nav-link__next" to={`/copertina/${idProssimaCopertina}/`} >
                         <span className="no-mobile">next</span>
-                        <span className="si-mobile">⟶</span>
+                        <span className="si-mobile">❯</span>
                     </Link>
                 )}
             </div>

@@ -6,7 +6,6 @@ export function animaPreloader(animaCopertine) {
         // Do something with the document
         // Call your modules and libraries
         var body = document.querySelector("body");
-
         gsap.to("#preloader", {
             opacity: 0,
             duration: 0.8,
