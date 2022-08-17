@@ -17,6 +17,10 @@ export const query = graphql`
         }
         titolo
         sottotitolo
+        openseaLink {
+            id
+            openseaLink
+        }
         immagine {
             gatsbyImage(width: 360)
         }
@@ -72,6 +76,9 @@ const Copertina = props => {
                         <h1>{props.data.contentfulCopertina.titolo}</h1>
                         <h4>{props.data.contentfulCopertina.sottotitolo}</h4>
                         <p>{props.data.contentfulCopertina.descrizione?.descrizione}</p>
+                        {props.data.contentfulCopertina?.openseaLink != null && (
+                            <a href={props.data.contentfulCopertina?.openseaLink?.openseaLink} title="Compra su OpenSea" class="opensea-btn" target="_blank"><img src="https://storage.googleapis.com/opensea-static/Logomark/Badge%20-%20Available%20On%20-%20BW.png" alt="Disponibile su OpenSea" /></a>
+                        )}
                     </div>
                 </div>
 
