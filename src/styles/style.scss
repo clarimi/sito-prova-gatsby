@@ -254,6 +254,11 @@ body {
   transition: 0.5s;
   z-index: 100;
 
+  .menu-line1,
+  .menu-line2 {
+    transition: all 0.3s ease-in-out;
+  }
+
   .menu-line1 {
     width: 100%;
     height: 1px;
@@ -271,6 +276,15 @@ body {
     .menu-line2,
     .menu-line1 {
       background-color: white;
+    }
+
+    .menu-line1 {
+      transform: translateY(1px) rotate(45deg);
+    }
+    .menu-line2 {
+      transform: translateY(0) rotate(-45deg);
+      width: 100%;
+      margin: 0;
     }
   }
 }
