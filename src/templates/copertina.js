@@ -7,7 +7,6 @@ import { animaPreloader } from './../scripts/preloader';
 import NavbarHeaderContainer from "../components/NavbarHeaderContainer"
 import { Helmet } from "react-helmet"
 
-
 export const query = graphql`
   query($id: String!) {
     contentfulCopertina(id: {eq: $id}) {
