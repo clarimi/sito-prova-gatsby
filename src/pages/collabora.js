@@ -23,11 +23,11 @@ const CollaboraPage = () => {
                     <h2 className="titolo-specifiche">
                         SPECIFICHE</h2>
                     <p className="testo-specifiche">
-                        Ciao, se stai leggendo è perchè sei interessatǝ al progetto e a collaborare con noi, di questo ne siamo molto felici.✨ <br></br><br></br>
+                        Ciao, se stai leggendo è perchè sei interessatǝ al progetto e a collaborare con noi e di questo siamo molto felici.✨ <br></br><br></br>
                         Di seguito troverai le specifiche più tecniche per il lavoro:<br></br>
                         Il formato richiesto per l’illustrazione è di <b>5906x8268 px</b>, a <b>300dpi</b>, in <b>RGB</b> in formato <b>PNG</b>.
                         Il formato fisico di riferimento corrisponde al <b>50x70 cm</b>.
-                        <br></br><br></br>
+                        <br></br>
                         Non ti devi preoccupare dell’impaginazione, ci pensiamo noi.
                         <br></br><br></br>
                         Ti chiediamo inoltre di scrivere una <b>breve descrizione</b> della tua copertina, in piena libertà: può contenere una citazione, qualche verso di una poesia, o un’interpretazione a parole tue legata all’opera. <br></br><br></br>
