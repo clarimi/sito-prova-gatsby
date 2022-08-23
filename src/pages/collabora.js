@@ -23,15 +23,23 @@ const CollaboraPage = () => {
                     <h2 className="titolo-specifiche">
                         SPECIFICHE</h2>
                     <p className="testo-specifiche">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor purus non enim praesent elementum facilisis leo, vel fringilla est ullamcorper eget nulla facilisi etiam dignissim diam quis enim lobortis scelerisque fermentum dui faucibus in ornare quam viverra orci sagittis eu volutpat odio facilisis mauris sit amet massa
+                        Ciao, se stai leggendo è perchè sei interessatǝ al progetto e a collaborare con noi, di questo ne siamo molto felici.✨ <br></br><br></br>
+                        Di seguito troverai le specifiche più tecniche per il lavoro:<br></br>
+                        Il formato richiesto per l’illustrazione è di <b>5906x8268 px</b>, a <b>300dpi</b>, in <b>RGB</b> in formato <b>PNG</b>.
+                        Il formato fisico di riferimento corrisponde al <b>50x70 cm</b>.
+                        <br></br><br></br>
+                        Non ti devi preoccupare dell’impaginazione, ci pensiamo noi.
+                        <br></br><br></br>
+                        Ti chiediamo inoltre di scrivere una <b>breve descrizione</b> della tua copertina, in piena libertà: può contenere una citazione, qualche verso di una poesia, o un’interpretazione a parole tue legata all’opera. <br></br><br></br>
+                        Per <b>collaborare</b> devi semplicemente inviarci una <b>e-mail</b> con la tua idea e, se ti va, due righe su di te. Presto ti invieremo tutto il materiale che ti servirà per realizzare il tuo lavoro.
                     </p>
                 </div>
                 <div className="collabora-partedue">
                     <h2 className="titolo-proprieta">
                         PROPRIETÁ</h2>
                     <p className="testo-proprieta">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor purus non enim praesent elementum facilisis leo, vel fringilla est ullamcorper eget nulla facilisi etiam dignissim diam quis enim lobortis scelerisque fermentum dui faucibus in ornare quam viverra orci sagittis eu volutpat odio facilisis mauris sit amet massa
-                    </p>
+                        La paternità dell’opera è sempre tua, la nostra intenzione nel futuro prossimo è aprire anche il sito web dove verrà pubblicata.
+                        Se mai arriveremo ad aprire lo shop saremo felici di ricontattarti per le stampe.                     </p>
                     <div className="button-collabora-container">
                         <a href="mailto:the.veroneser@gmail.com" className="button-collabora">COLLABORA</a>
                     </div>
