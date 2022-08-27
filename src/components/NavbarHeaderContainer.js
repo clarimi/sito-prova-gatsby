@@ -5,9 +5,6 @@ import { ethers } from "ethers";
 import NavbarHeader from "../components/NavbarHeader"
 import NavbarHeaderMobile from "../components/NavbarHeaderMobile"
 
-//Copycopy code to clipboard
-
-
 class NavbarHeaderContainer extends React.Component {
     isLoggedIn = false;
 
@@ -33,8 +30,7 @@ class NavbarHeaderContainer extends React.Component {
 
     }
     render() {
-
-        if (typeof window.ethereum !== 'undefined') {
+        if (typeof window !== 'undefined' && typeof window.ethereum !== 'undefined') {
             console.log('MetaMask is installed!');
         }
 

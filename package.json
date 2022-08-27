@@ -28,6 +28,7 @@
     "gatsby-source-contentful": "^7.11.0",
     "gatsby-source-filesystem": "^4.15.0",
     "gatsby-transformer-sharp": "^4.15.0",
+    "global": "^4.4.0",
     "gsap": "^3.10.4",
     "jazzicon": "^1.5.0",
     "react": "^17.0.1",
