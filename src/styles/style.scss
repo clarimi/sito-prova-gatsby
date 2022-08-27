@@ -301,6 +301,26 @@ body {
   }
 }
 
+.metamask-login-btn {
+  background-color: #101010;
+  color: #fff;
+  position: fixed;
+  bottom: 0;
+  right: 16px;
+  border: none;
+  padding: 8px 16px;
+  text-transform: uppercase;
+  cursor: pointer;
+  z-index: 10000;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+
+  &:hover {
+    background-color: #1a1a1a;
+  }
+}
+
+
 @media only screen and (min-width: 600px) {
   .si-mobile {
     display: none !important;
