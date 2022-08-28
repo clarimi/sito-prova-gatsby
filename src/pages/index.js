@@ -13,6 +13,7 @@ const IndexPage = () => {
   return (
     <main>
       <Helmet>
+        <meta name="facebook-domain-verification" content="1vy2x83h5kk5c43v57ilpaywwznfb2" />
         <title> Home Page - The Veroneser</title>
       </Helmet>
       <FontImport></FontImport>
