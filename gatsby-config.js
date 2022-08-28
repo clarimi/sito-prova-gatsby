@@ -1,6 +1,7 @@
 module.exports = {
     siteMetadata: {
         title: `The Veroneser`,
+        description: `A fictional cover project inspired by the city of Verona seen through the eyes of different artists`,
         siteUrl: `https://www.theveroneser.it`
     },
     plugins: ["gatsby-plugin-sass", "gatsby-plugin-image", "gatsby-plugin-sharp", "gatsby-transformer-sharp", "gatsby-plugin-react-helmet", "gatsby-plugin-transition-link", {
