@@ -37,7 +37,7 @@ class ArtGallery extends React.Component {
     animaCopertine() {
 
         const colonne = 3;
-        const spazioCopertina = 320;
+        const spazioCopertina = 340;
 
         for (let index = 0; index < colonne; index++) {
 
@@ -148,13 +148,21 @@ class ArtGallery extends React.Component {
         const colonna1 = copertine.filter((copertina, indice) => (indice + 1) % 3 === 1);
         const colonna2 = copertine.filter((copertina, indice) => (indice + 1) % 3 === 2);
         const colonna3 = copertine.filter((copertina, indice) => (indice + 1) % 3 === 0);
+
+
         this.colonne = [colonna1, colonna2, colonna3];
+
+        if(colonna1.length !== colonna3.length && colonna1.length === colonna2.length) {
+            this.colonne = [colonna1, colonna3, colonna2];
+        } else if(colonna1.length !== colonna3.length && colonna2.length === colonna3.length) {
+            this.colonne = [colonna2, colonna1, colonna3];
+        }
 
         return (
             <div id="smooth-wrapper">
                 <div className="art-gallery" id="smooth-content">
                     <div className="art-gallery__column" id="colonna-1">
-                        {colonna1.map((copertina, id) => (
+                        {this.colonne[0].map((copertina, id) => (
                             <TransitionLink key={id.toString()} exit={{
                                 trigger: ({ exit, node }) => this.leaving(exit, node),
                                 length: 1
@@ -171,7 +179,7 @@ class ArtGallery extends React.Component {
                     </div>
 
                     <div className="art-gallery__column" id="colonna-2">
-                        {colonna2.map((copertina, id) => (
+                        {this.colonne[1].map((copertina, id) => (
                             <TransitionLink key={id.toString()} exit={{
                                 trigger: ({ exit, node }) => this.leaving(exit, node),
                                 length: 1
@@ -188,7 +196,7 @@ class ArtGallery extends React.Component {
                     </div>
 
                     <div className="art-gallery__column" id="colonna-3">
-                        {colonna3.map((copertina, id) => (
+                        {this.colonne[2].map((copertina, id) => (
                             <TransitionLink key={id.toString()} exit={{
                                 trigger: ({ exit, node }) => this.leaving(exit, node),
                                 length: 1
