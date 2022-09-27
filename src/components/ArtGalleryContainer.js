@@ -10,19 +10,17 @@ const ArtGalleryContainer = () => {
     const copertineData = useStaticQuery(graphql`
     query QueryTutteCopertine {
         allContentfulCopertina(sort: {fields: index, order: ASC}) {
-        edges {
+          edges {
             node {
-            id
-            titolo
-            immagine {
-                gatsbyImage(
-                    width: 260
-                )
+              id
+              titolo
+              immagine {
+                gatsbyImage(width: 260, formats: PNG, breakpoints:[260])
+              }
             }
-            }
+          }
         }
-        }
-    }`);
+      }`);
 
     return (
         <main>

@@ -21,7 +21,7 @@ export const query = graphql`
             openseaLink
         }
         immagine {
-            gatsbyImage(width: 360)
+            gatsbyImage(width: 360, formats: PNG, breakpoints:[360])
         }
       }
       allContentfulCopertina(sort: {fields: index, order: ASC}) {
